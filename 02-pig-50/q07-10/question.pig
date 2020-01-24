@@ -12,3 +12,12 @@ fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
+--Cargar datos
+data = LOAD 'data.tsv' AS (upper_case:CHARARRAY, lower_case:BAG{tup:TUPLE(letter:CHARARRAY)},obs:MAP[]);
+
+data2 = FOREACH data GENERATE $0, COUNT($1), SIZE($2);
+
+--data3 = ORDER data2 BY $0, $1, $2;
+data3 = ORDER data2 BY $0..$2;
+
+STORE data3 INTO 'output' USING PigStorage(',');

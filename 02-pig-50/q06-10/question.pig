@@ -12,3 +12,17 @@ fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
+
+--Cargar datos
+data = LOAD 'data.tsv' AS (upper_case:CHARARRAY, lower_case:BAG{tup:TUPLE(letter:CHARARRAY)},obs:MAP[]);
+
+-- Extraer las claves
+letras = FOREACH data GENERATE FLATTEN(KEYSET(obs));
+
+-- Agrupar letras 
+grupo_letras = GROUP letras BY $0;
+
+-- Contar claves
+conteo_claves = FOREACH grupo_letras GENERATE group, COUNT($1);
+
+STORE conteo_claves INTO 'output' USING PigStorage(',');

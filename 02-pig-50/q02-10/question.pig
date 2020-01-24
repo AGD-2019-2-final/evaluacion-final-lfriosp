@@ -8,5 +8,11 @@ fs -rm -f -r output;
 -- 
 --  >>> Escriba el codigo del mapper a partir de este punto <<<
 -- 
+data = LOAD 'data.tsv' USING PigStorage('\t')
+        AS(letra:CHARARRAY,
+           fecha:CHARARRAY,
+           cantidad:INT);
+orden = ORDER data BY letra, cantidad ASC;
 
+STORE orden INTO 'output' USING PigStorage('\t');
 
