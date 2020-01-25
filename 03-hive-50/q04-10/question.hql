@@ -41,7 +41,6 @@ LOAD DATA LOCAL INPATH 'tbl1.csv' INTO TABLE tbl1;
 --
 DROP TABLE IF EXISTS columna5;
 CREATE TABLE columna5 AS SELECT EXPLODE(c5) AS letras FROM tbl0;
-SELECT * FROM columna5;
 
 DROP TABLE IF EXISTS letras_unicas;
 CREATE TABLE letras_unicas AS SELECT DISTINCT letras FROM columna5 SORT BY letras;

@@ -1,28 +1,24 @@
--- 
+--
 -- Pregunta
 -- ===========================================================================
--- 
--- Para el archivo `data.tsv` Calcule la cantidad de registros por clave de la 
--- columna 3. En otras palabras, cuántos registros hay que tengan la clave 
+--
+-- Para el archivo `data.tsv` Calcule la cantidad de registros por clave de la
+-- columna 3. En otras palabras, cuántos registros hay que tengan la clave
 -- `aaa`?
--- 
+--
 -- Escriba el resultado a la carpeta `output` del directorio actual.
--- 
+--
 fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
 
---Cargar datos
-data = LOAD 'data.tsv' AS (upper_case:CHARARRAY, lower_case:BAG{tup:TUPLE(letter:CHARARRAY)},obs:MAP[]);
+data = LOAD 'data.tsv' AS (var1:CHARARRAY, var2:BAG{tup:TUPLE(letter:CHARARRAY)},var3:MAP[]);
 
--- Extraer las claves
-letras = FOREACH data GENERATE FLATTEN(KEYSET(obs));
+data = FOREACH data GENERATE FLATTEN(var3) AS var3;
 
--- Agrupar letras 
-grupo_letras = GROUP letras BY $0;
+data_agrupada = GROUP data BY var3;
 
--- Contar claves
-conteo_claves = FOREACH grupo_letras GENERATE group, COUNT($1);
+conteo_letra = FOREACH data_agrupada GENERATE group, COUNT($1);
 
-STORE conteo_claves INTO 'output' USING PigStorage(',');
+STORE conteo_letra INTO 'output' USING PigStorage(',');

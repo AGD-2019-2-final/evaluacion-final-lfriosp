@@ -9,10 +9,12 @@ fs -rm -f -r output;
 --
 -- >>> Escriba su respuesta a partir de este punto <<<
 --
-data = LOAD 'data.tsv' AS (letra:CHARARRAY, fecha:CHARARRAY, cantidad:INT);
+datos = LOAD 'data.tsv' AS (letter:CHARARRAY, date:CHARARRAY, number:INT);
 
-letras = FOREACH data GENERATE letra;
-grupo = GROUP letras BY letra;
-conteo = FOREACH grupo GENERATE group, COUNT(letras);
+letras = FOREACH datos GENERATE letter;
 
-STORE conteo INTO 'output';
+grupo = GROUP letras BY letter;
+
+cuentaletras = FOREACH grupo GENERATE group, COUNT(letras);
+
+STORE cuentaletras INTO 'output';
