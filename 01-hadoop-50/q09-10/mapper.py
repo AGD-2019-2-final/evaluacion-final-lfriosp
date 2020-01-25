@@ -6,9 +6,9 @@ import sys
 if __name__ == "__main__":
 
     for line in sys.stdin:
-       
-        letter = line.split("   ")[0]
-        date = line.split("   ")[1]
-        val = line.split("   ")[2]
-        val = int(val)
-        sys.stdout.write("{}\t{}\t{}\t{}\n".format(str(val/100),letter,date,val))
+
+        letra = line.split("   ")[0]
+        fecha = line.split("   ")[1]
+        valor = line.split("   ")[2]
+        valor = int(valor)
+        sys.stdout.write("{}\t{}\t{}\t{}\n".format(str(valor/100), letra, fecha, valor))

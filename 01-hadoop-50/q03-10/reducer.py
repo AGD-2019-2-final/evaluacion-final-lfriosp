@@ -8,9 +8,9 @@ from operator import itemgetter
 if __name__ == '__main__':
 
     sort = sorted(sys.stdin, key=itemgetter(2))
-       
+
     for line in sort:
-        key, val = line.split(",")
-        val = int(val)
-        
-        sys.stdout.write("{},{}\n".format(key, val))
+        key, valor = line.split(",")
+        valor = int(valor)
+
+        sys.stdout.write("{},{}\n".format(key, valor))

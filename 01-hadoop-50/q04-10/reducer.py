@@ -6,19 +6,19 @@ if __name__ == '__main__':
 
     curkey = None
     total= None
-    
+
     for line in sys.stdin:
-        key, val = line.split("\t")
-        val = int(val)
-        
+        key, valor = line.split("\t")
+        valor = int(valor)
+
         if key == curkey:
-            total += val        
+            total += valor
         else:
-            if curkey is not None: 
+            if curkey is not None:
                 sys.stdout.write("{},{}\n".format(curkey, total))
-                
+
             curkey = key
-            total = val
-            
+            total = valor
+
     sys.stdout.write("{},{}\n".format(curkey, total))
                 

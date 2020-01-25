@@ -4,6 +4,6 @@ import sys
 #
 if __name__ == "__main__":
     for line in sys.stdin:
-        purpose = line.split(',')[3]
-        amount = line.split(',')[4]
-        sys.stdout.write("{}\t{}\n".format(purpose,amount))
+        var1 = line.split(',')[3]
+        cantidad = line.split(',')[4]
+        sys.stdout.write("{}\t{}\n".format(var1,cantidad))

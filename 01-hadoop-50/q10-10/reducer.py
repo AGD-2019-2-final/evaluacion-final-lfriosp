@@ -6,17 +6,17 @@ if __name__ == '__main__':
 
     curkey = None
     for line in sys.stdin:
-        aux,key,val = line.split("\t")
-        val = str(int(val))
-        
+        aux, key, valor = line.split("\t")
+        valor = str(int(valor))
+
         if curkey == key:
-            numbers.append(val)
+            numbers.append(valor)
         else:
             if curkey is not None:
                     list_numbers = ",".join(numbers)
                     sys.stdout.write("{}\t{}\n".format(curkey, list_numbers))
             curkey = key
             numbers = []
-            numbers.append(val)
+            numbers.append(valor)
     list_numbers = ",".join(numbers)
     sys.stdout.write("{}\t{}\n".format(curkey, list_numbers))

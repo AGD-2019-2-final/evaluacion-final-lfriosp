@@ -4,7 +4,7 @@ import sys
 #
 if __name__ == "__main__":
     for line in sys.stdin:
-        letter = line.split(',')[0]
-        number = line.split(',')[1]
-        number = int(number)
-        sys.stdout.write("{},{}\n".format(letter,number))
+        letra = line.split(',')[0]
+        num = line.split(',')[1]
+        num = int(num)
+        sys.stdout.write("{},{}\n".format(letra,num))

@@ -4,8 +4,8 @@ import sys
 #
 if __name__ == "__main__":
     for line in sys.stdin:
-        letter = line.split('   ')[0]
-        date = line.split('   ')[1]
-        value = line.split('   ')[2]
-        value = int(value)
-        sys.stdout.write("{},{},{},{}\n".format(letter+str(value/100),letter,date,value))
+        letra = line.split('   ')[0]
+        fecha = line.split('   ')[1]
+        valor = line.split('   ')[2]
+        valor = int(valor)
+        sys.stdout.write("{},{},{},{}\n".format(letra + str(valor/100), letra, fecha, valor))

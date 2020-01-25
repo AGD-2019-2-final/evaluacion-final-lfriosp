@@ -5,7 +5,7 @@ import sys
 
 if __name__ == "__main__":
     for line in sys.stdin:
-        letter = line.split("   ")[0]
-        val = line.split("   ")[2]
-        val = int(val)
-        sys.stdout.write("{}\t{}\t1\n".format(letter,val))
+        letra = line.split("   ")[0]
+        valor = line.split("   ")[2]
+        valor = int(valor)
+        sys.stdout.write("{}\t{}\t1\n".format(letra, valor))
